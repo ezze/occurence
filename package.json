@@ -39,7 +39,7 @@
     "eslint-config-ezze": "0.0.3",
     "istanbul": "^1.1.0-alpha.1",
     "mkdirp": "^0.5.1",
-    "mocha": "^3.3.0",g
+    "mocha": "^3.3.0",
     "rimraf": "^2.6.1",
     "uglify-js": "^2.8.22"
   },
