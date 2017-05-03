@@ -13,6 +13,14 @@ describe('command', () => {
         handled.should.be.true;
     });
 
+    it('add command handler twice', () => {
+        const channel = new Channel();
+        const handler1 = () => {};
+        const handler2 = () => {};
+        channel.handle('command', handler1);
+        channel.handle.bind(channel, 'command').should.throw(TypeError);
+    });
+
     it('remove command handler', () => {
         let count = 0;
         const channel = new Channel();
@@ -49,5 +57,18 @@ describe('command', () => {
         const handler = () => 1;
         channel.handle('command', handler);
         channel.request('command').should.be.equal(1);
+    });
+
+    it('pass additional options to command handler', () => {
+        const channel = new Channel();
+        const commandOptions = {
+            item: 1,
+            message: 'hello world'
+        };
+        const handler = options => {
+            options.should.be.deep.equal(commandOptions);
+        };
+        channel.handle('command', handler);
+        channel.execute('command', commandOptions);
     });
 });
