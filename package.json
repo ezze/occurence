@@ -1,7 +1,7 @@
 {
   "name": "dissemination",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.2.0",
+  "description": "Lightweight event/command library created to replace Backbone.Radio",
   "main": "lib/dissemination.js",
   "scripts": {
     "clean": "rimraf lib dist",
@@ -20,6 +20,16 @@
     "type": "git",
     "url": "git+https://github.com/ezze/dissemination.git"
   },
+  "keywords": [
+    "event",
+    "command",
+    "channel",
+    "radio",
+    "subscribe",
+    "publish",
+    "subpub",
+    "dissemination"
+  ],
   "author": "Dmitriy Pushkov <ezze@ezze.org>",
   "license": "MIT",
   "bugs": {
