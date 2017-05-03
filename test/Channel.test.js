@@ -62,15 +62,15 @@ describe('Channel', () => {
 
     it('remove listener of event that has no registered listeners', () => {
         const channel = new Channel();
-        const listener = () => console.log('hello world');
+        const listener = () => {};
         channel.on('event', listener);
         channel.off.bind(channel, 'anotherEvent', listener).should.throw(TypeError);
     });
 
     it('remove listener of event having registered listeners but not this one', () => {
         const channel = new Channel();
-        const listener1 = () => console.log('hello world');
-        const listener2 = () => console.log('remove me');
+        const listener1 = () => {};
+        const listener2 = () => {};
         channel.on('event', listener1);
         channel.off.bind(channel, 'event', listener2).should.throw(TypeError);
     });
