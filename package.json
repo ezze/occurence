@@ -1,14 +1,14 @@
 {
   "name": "dissemination",
-  "version": "0.1.0",
-  "description": "",
-  "main": "lib/channel.js",
+  "version": "0.2.0",
+  "description": "Lightweight event/command library created to replace Backbone.Radio",
+  "main": "lib/dissemination.js",
   "scripts": {
     "clean": "rimraf lib dist",
     "build": "npm run transpile && npm run browserify && npm run uglify",
     "rebuild": "npm run clean && npm run build",
     "transpile": "babel src -d lib",
-    "browserify": "mkdirp dist && browserify lib/channel.js --standalone dissemination -o dist/dissemination.js -d",
+    "browserify": "mkdirp dist && browserify lib/dissemination.js --standalone dissemination -o dist/dissemination.js -d",
     "uglify": "uglifyjs -c warnings=false -o dist/dissemination.min.js -- dist/dissemination.js",
     "lint": "eslint ./src",
     "lint:test": "eslint -c .eslintrc.test.json ./test",
@@ -20,6 +20,16 @@
     "type": "git",
     "url": "git+https://github.com/ezze/dissemination.git"
   },
+  "keywords": [
+    "event",
+    "command",
+    "channel",
+    "radio",
+    "subscribe",
+    "publish",
+    "subpub",
+    "dissemination"
+  ],
   "author": "Dmitriy Pushkov <ezze@ezze.org>",
   "license": "MIT",
   "bugs": {
