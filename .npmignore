@@ -6,4 +6,5 @@ test
 .babelrc
 .eslintrc.json
 .eslintrc.test.json
+.npmignore
 .travis.yml
