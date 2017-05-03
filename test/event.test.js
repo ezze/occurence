@@ -3,7 +3,7 @@ chai.should();
 
 import Channel from '../src/Channel';
 
-describe('Channel', () => {
+describe('event', () => {
     it('add event listener and fire event', () => {
         let handled = false;
         const channel = new Channel();
@@ -35,7 +35,7 @@ describe('Channel', () => {
         channel.on('event', listener2);
         channel.on('event', listener3);
         channel.fire('event');
-        result.should.equal('123');
+        result.should.be.equal('123');
     });
 
     it('remove all event listeners', () => {
@@ -52,7 +52,7 @@ describe('Channel', () => {
         channel.on('event', listener1);
         channel.on('event', listener2);
         channel.on('event', listener3);
-        result.should.equal('123');
+        result.should.be.equal('123');
     });
 
     it('remove all listeners of event that has no registered listeners', () => {
@@ -99,7 +99,7 @@ describe('Channel', () => {
         channel.on('event', listener2);
         channel.on('event', listener3);
         channel.fire('event');
-        result.should.equal('12');
+        result.should.be.equal('12');
     });
 
     it('event name and parameters as event listener arguments', () => {
@@ -110,8 +110,8 @@ describe('Channel', () => {
             message: 'hello world'
         };
         const listener = (name, params) => {
-            name.should.equal(eventName);
-            params.should.deep.equal(eventParams);
+            name.should.be.equal(eventName);
+            params.should.be.deep.equal(eventParams);
         };
         channel.on(eventName, listener);
         channel.fire(eventName, eventParams);
@@ -124,7 +124,7 @@ describe('Channel', () => {
             message: 'hello world'
         };
         const listener = (name, params, options) => {
-            options.should.deep.equal(eventOptions);
+            options.should.be.deep.equal(eventOptions);
         };
         channel.on('event', listener, eventOptions);
         channel.fire('event');
