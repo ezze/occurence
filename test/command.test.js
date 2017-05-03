@@ -18,7 +18,7 @@ describe('command', () => {
         const handler1 = () => {};
         const handler2 = () => {};
         channel.handle('command', handler1);
-        channel.handle.bind(channel, 'command').should.throw(TypeError);
+        channel.handle.bind(channel, 'command', handler2).should.throw(TypeError);
     });
 
     it('remove command handler', () => {
