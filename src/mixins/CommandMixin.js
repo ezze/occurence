@@ -28,7 +28,7 @@ const CommandMixin = {
         this.request(name, options);
     },
     handlerRegistered(name) {
-        return this._handlers && typeof this._handlers[name] === 'function';
+        return this._handlers && !!this._handlers[name];
     }
 };
 

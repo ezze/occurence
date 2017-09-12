@@ -56,7 +56,7 @@ const EventMixin = {
         }
     },
     listenersRegistered(name) {
-        return this._listeners && this._listeners[name].length > 0;
+        return this._listeners && !!this._listeners[name];
     }
 };
 
