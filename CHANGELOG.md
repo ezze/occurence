@@ -1,5 +1,10 @@
 ## Changelog
 
+### 0.2.1
+
+- `listenersRegistered` and `handlerRegistered` methods are added to `EventMixen` and `CommandMixin`
+respectively.
+
 ### 0.2.0 (2017-05-03)
 
 - The following [Webpack](https://webpack.js.org/) warning is fixed:
