@@ -2,7 +2,7 @@
 
 [![NPM Version](https://badge.fury.io/js/dissemination.svg)](https://badge.fury.io/js/dissemination)
 [![Build Status](https://travis-ci.org/ezze/dissemination.svg?branch=dev)](https://travis-ci.org/ezze/dissemination)
-[![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg)](https://coveralls.io/github/ezze/dissemination)
+[![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg?branch=dev)](https://coveralls.io/github/ezze/dissemination?branch=dev)
 
 Lightweight event/command library created to replace [Backbone.Radio](https://github.com/marionettejs/backbone.radio) in
 projects ported from [Backbone](http://backbonejs.org/)/[Marionette](https://marionettejs.com/) to [React](https://facebook.github.io/react/).
