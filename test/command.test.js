@@ -13,6 +13,13 @@ describe('command', () => {
         handled.should.be.true;
     });
 
+    it('check command handler is registered', () => {
+        const channel = new Channel();
+        const handler = () => {};
+        channel.handle('command', handler);
+        channel.handlerRegistered('command').should.be.equal(true);
+    });
+
     it('add command handler twice', () => {
         const channel = new Channel();
         const handler1 = () => {};

@@ -16,7 +16,7 @@ const EventMixin = {
         });
     },
     off(name, listener) {
-        if (!this._listeners || !this._listeners[name]) {
+        if (!this.listenersRegistered(name)) {
             throw new TypeError(`Listeners for event "${name}" are not registered.`);
         }
 
@@ -35,6 +35,9 @@ const EventMixin = {
         }
 
         this._listeners[name].splice(index, 1);
+        if (this._listeners[name].length === 0) {
+            delete this._listeners[name];
+        }
     },
     fire(name, params) {
         if (!this._listeners || !this._listeners[name]) {
@@ -51,6 +54,9 @@ const EventMixin = {
                 break;
             }
         }
+    },
+    listenersRegistered(name) {
+        return this._listeners && this._listeners[name].length > 0;
     }
 };
 

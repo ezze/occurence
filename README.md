@@ -2,7 +2,7 @@
 
 [![NPM Version](https://badge.fury.io/js/dissemination.svg)](https://badge.fury.io/js/dissemination)
 [![Build Status](https://travis-ci.org/ezze/dissemination.svg?branch=dev)](https://travis-ci.org/ezze/dissemination)
-[![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg)](https://coveralls.io/github/ezze/dissemination)
+[![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg?branch=dev)](https://coveralls.io/github/ezze/dissemination?branch=dev)
 
 Lightweight event/command library created to replace [Backbone.Radio](https://github.com/marionettejs/backbone.radio) in
 projects ported from [Backbone](http://backbonejs.org/)/[Marionette](https://marionettejs.com/) to [React](https://facebook.github.io/react/).
@@ -114,6 +114,14 @@ channel().fire('event');
     console.log(result); // => 1
     ```
     
+- check whether event listeners are registered:
+
+    ```javascript
+    var listener = function() { console.log('event is fired'); };
+    channel().on('event', listener);
+    console.log(channel().listenersRegistered('event')); // => true
+    ```
+    
 ### Commands
     
 - add command handler:
@@ -153,6 +161,14 @@ channel().fire('event');
     console.log(channel().request('positive', { number: 2 })); // => true
     console.log(channel().request('positive', { number: -1 })); // => false
     ```
+    
+- check whether command handler is registered:
+
+    ```javascript
+    var handler = function() { console.log('command is handled'); };
+    channel().handle('command', handler);
+    console.log(channel().handlerRegistered('command')); // => true
+    ```    
     
 ### Mixins
 
