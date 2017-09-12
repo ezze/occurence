@@ -25,6 +25,16 @@ describe('event', () => {
         count.should.be.equal(2);
     });
 
+    it('remove not all event listeners', () => {
+        const channel = new Channel();
+        const listener1 = () => {};
+        const listener2 = () => {};
+        channel.on('event', listener1);
+        channel.on('event', listener2);
+        channel.off('event', listener1);
+        channel.listenersRegistered('event').should.be.equal(true);
+    });
+
     it('add few event listeners and fire event', () => {
         let result = '';
         const channel = new Channel();
