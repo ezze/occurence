@@ -1,6 +1,6 @@
 ## Changelog
 
-### 0.2.1
+### 0.2.1 (2017-09-12)
 
 - `listenersRegistered` and `handlerRegistered` methods are added to `EventMixen` and `CommandMixin`
 respectively.
