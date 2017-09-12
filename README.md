@@ -114,6 +114,14 @@ channel().fire('event');
     console.log(result); // => 1
     ```
     
+- check whether event listeners are registered:
+
+    ```javascript
+    var listener = function() { console.log('event is fired'); };
+    channel().on('event', listener);
+    console.log(channel().listenersRegistered('event')); // => true
+    ```
+    
 ### Commands
     
 - add command handler:
@@ -153,6 +161,14 @@ channel().fire('event');
     console.log(channel().request('positive', { number: 2 })); // => true
     console.log(channel().request('positive', { number: -1 })); // => false
     ```
+    
+- check whether command handler is registered:
+
+    ```javascript
+    var handler = function() { console.log('command is handled'); };
+    channel().handle('command', handler);
+    console.log(channel().handlerRegistered('command')); // => true
+    ```    
     
 ### Mixins
 
