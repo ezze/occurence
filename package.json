@@ -1,6 +1,6 @@
 {
   "name": "dissemination",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Lightweight event/command library created to replace Backbone.Radio",
   "main": "lib/dissemination.js",
   "scripts": {
