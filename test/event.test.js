@@ -35,6 +35,13 @@ describe('event', () => {
         channel.listenersRegistered('event').should.be.equal(true);
     });
 
+    it('check event listener existance when listener for another event is registered', () => {
+        const channel = new Channel();
+        const listener = () => {};
+        channel.on('anotherEvent', listener);
+        channel.listenersRegistered('event').should.be.equal(false);
+    });
+
     it('add few event listeners and fire event', () => {
         let result = '';
         const channel = new Channel();

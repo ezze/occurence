@@ -20,6 +20,13 @@ describe('command', () => {
         channel.handlerRegistered('command').should.be.equal(true);
     });
 
+    it('check command handler existance when handler for another command is registered', () => {
+        const channel = new Channel();
+        const handler = () => {};
+        channel.handle('anotherCommand', handler);
+        channel.handlerRegistered('command').should.be.equal(false);
+    });
+
     it('add command handler twice', () => {
         const channel = new Channel();
         const handler1 = () => {};
