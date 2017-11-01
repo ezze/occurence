@@ -1,5 +1,11 @@
 ## Changelog
 
+### 0.2.2 (2017-11-01)
+
+- `listenersRegistered` and `handlerRegistered` methods are improved (exception of `listenersRegistered`
+is fixed when some another event listener is registered);
+- New tests for `listenersRegistered` and `handlerRegistered` methods are added.
+
 ### 0.2.1 (2017-09-12)
 
 - `listenersRegistered` and `handlerRegistered` methods are added to `EventMixen` and `CommandMixin`
