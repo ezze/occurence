@@ -187,13 +187,13 @@ channel().fire('event');
 
     ```javascript
     var events = Object.assign({}, channel.EventMixin);
-    events.on('event', function({ console.log('event is fired'); }));
+    events.on('event', function() { console.log('event is fired'); });
     events.fire('event');
     ```
     
     ```javascript
     var commands = Object.assign({}, channel.CommandMixin);
-    commands.handle('command', function({ return 'hello world'; }));
+    commands.handle('command', function() { return 'hello world'; });
     console.log(commands.request('command')); // => 'hello world'
     ```
 
