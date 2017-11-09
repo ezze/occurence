@@ -102,12 +102,23 @@ channel().fire('event');
     channel().fire('event', { item: 1 });    
     ```
     
+- add event listener that will be executed once:
+
+    ```javascript
+    var count = 0;
+    var listener = function() { count += 1; };
+    channel().once('event', listener);
+    channel().fire('event');
+    channel().fire('event');
+    console.log(count); // => 1
+    ```
+    
 - interrupt event listeners' execution chain:
     
     ```javascript
     var result = 0;
-    var listener1 = function() { result += 1; return false; }
-    var listener2 = function() { result += 2; }
+    var listener1 = function() { result += 1; return false; };
+    var listener2 = function() { result += 2; };
     channel().on('event', listener1);
     channel().on('event', listener2);
     channel().fire('event');
