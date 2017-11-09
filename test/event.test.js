@@ -13,6 +13,16 @@ describe('event', () => {
         handled.should.be.true;
     });
 
+    it('add event listener that should be executed once', () => {
+        let count = 0;
+        const channel = new Channel();
+        const listener = () => count++;
+        channel.once('event', listener);
+        channel.fire('event');
+        channel.fire('event');
+        count.should.be.equal(1);
+    });
+
     it('remove event listener', () => {
         let count = 0;
         const channel = new Channel();
@@ -23,6 +33,30 @@ describe('event', () => {
         channel.off('event', listener);
         channel.fire('event');
         count.should.be.equal(2);
+    });
+
+    it('remove event listener that should be executed once', done => {
+        let count = 0;
+        const channel = new Channel();
+        const listener = () => count++;
+        channel.once('event', listener);
+        let isFired = false;
+        let isOff = false;
+        setTimeout(() => {
+            isFired = true;
+            channel.fire('event');
+            if (isFired && isOff) {
+                done();
+            }
+        }, 200);
+        setTimeout(() => {
+            isOff = true;
+            channel.off('event', listener);
+            count.should.be.equal(0);
+            if (isFired && isOff) {
+                done();
+            }
+        }, 100);
     });
 
     it('remove not all event listeners', () => {
