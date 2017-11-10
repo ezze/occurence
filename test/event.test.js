@@ -4,13 +4,23 @@ chai.should();
 import Channel from '../src/Channel';
 
 describe('event', () => {
-    it('add event listener and fire event', () => {
+    it('add event listener', () => {
         let handled = false;
         const channel = new Channel();
         const listener = () => handled = true;
         channel.on('event', listener);
         channel.fire('event');
         handled.should.be.true;
+    });
+
+    it('add event listener that should be executed once', () => {
+        let count = 0;
+        const channel = new Channel();
+        const listener = () => count++;
+        channel.once('event', listener);
+        channel.fire('event');
+        channel.fire('event');
+        count.should.be.equal(1);
     });
 
     it('remove event listener', () => {
@@ -25,6 +35,30 @@ describe('event', () => {
         count.should.be.equal(2);
     });
 
+    it('remove event listener that should be executed once', done => {
+        let count = 0;
+        const channel = new Channel();
+        const listener = () => count++;
+        channel.once('event', listener);
+        let isFired = false;
+        let isOff = false;
+        setTimeout(() => {
+            isFired = true;
+            channel.fire('event');
+            if (isFired && isOff) {
+                done();
+            }
+        }, 200);
+        setTimeout(() => {
+            isOff = true;
+            channel.off('event', listener);
+            count.should.be.equal(0);
+            if (isFired && isOff) {
+                done();
+            }
+        }, 100);
+    });
+
     it('remove not all event listeners', () => {
         const channel = new Channel();
         const listener1 = () => {};
@@ -35,6 +69,13 @@ describe('event', () => {
         channel.listenersRegistered('event').should.be.equal(true);
     });
 
+    it('check existance of event listener that should be executed once', () => {
+        const channel = new Channel();
+        const listener = () => {};
+        channel.once('event', listener);
+        channel.listenersRegistered('event').should.be.equal(true);
+    });
+
     it('check event listener existance when listener for another event is registered', () => {
         const channel = new Channel();
         const listener = () => {};
@@ -42,7 +83,7 @@ describe('event', () => {
         channel.listenersRegistered('event').should.be.equal(false);
     });
 
-    it('add few event listeners and fire event', () => {
+    it('add few event listeners', () => {
         let result = '';
         const channel = new Channel();
         const listener1 = () => result += '1';
@@ -53,6 +94,20 @@ describe('event', () => {
         channel.on('event', listener3);
         channel.fire('event');
         result.should.be.equal('123');
+    });
+
+    it('add few event listeners that should be executed once', () => {
+        let result = '';
+        const channel = new Channel();
+        const listener1 = () => result += '1';
+        const listener2 = () => result += '2';
+        const listener3 = () => result += '3';
+        channel.once('event', listener1);
+        channel.on('event', listener2);
+        channel.once('event', listener3);
+        channel.fire('event');
+        channel.fire('event');
+        result.should.be.equal('1232');
     });
 
     it('remove all event listeners', () => {

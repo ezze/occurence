@@ -102,12 +102,23 @@ channel().fire('event');
     channel().fire('event', { item: 1 });    
     ```
     
+- add event listener that will be executed once:
+
+    ```javascript
+    var count = 0;
+    var listener = function() { count += 1; };
+    channel().once('event', listener);
+    channel().fire('event');
+    channel().fire('event');
+    console.log(count); // => 1
+    ```
+    
 - interrupt event listeners' execution chain:
     
     ```javascript
     var result = 0;
-    var listener1 = function() { result += 1; return false; }
-    var listener2 = function() { result += 2; }
+    var listener1 = function() { result += 1; return false; };
+    var listener2 = function() { result += 2; };
     channel().on('event', listener1);
     channel().on('event', listener2);
     channel().fire('event');
@@ -176,13 +187,13 @@ channel().fire('event');
 
     ```javascript
     var events = Object.assign({}, channel.EventMixin);
-    events.on('event', function({ console.log('event is fired'); }));
+    events.on('event', function() { console.log('event is fired'); });
     events.fire('event');
     ```
     
     ```javascript
     var commands = Object.assign({}, channel.CommandMixin);
-    commands.handle('command', function({ return 'hello world'; }));
+    commands.handle('command', function() { return 'hello world'; });
     console.log(commands.request('command')); // => 'hello world'
     ```
 
