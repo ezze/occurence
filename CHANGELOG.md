@@ -3,6 +3,7 @@
 ### 0.3.0 (2017-11-10)
 
 - `once` method is added to `EventMixin`.
+- New tests for `once` method are adde.
 
 ### 0.2.2 (2017-11-01)
 
