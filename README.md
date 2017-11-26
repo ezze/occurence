@@ -1,5 +1,7 @@
 # dissemination
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ezze/dissemination.svg)](https://greenkeeper.io/)
+
 [![NPM Version](https://badge.fury.io/js/dissemination.svg)](https://badge.fury.io/js/dissemination)
 [![Build Status](https://travis-ci.org/ezze/dissemination.svg?branch=dev)](https://travis-ci.org/ezze/dissemination)
 [![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg?branch=dev)](https://coveralls.io/github/ezze/dissemination?branch=dev)
