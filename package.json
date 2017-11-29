@@ -11,10 +11,11 @@
     "browserify": "mkdirp dist && browserify lib/dissemination.js --standalone dissemination -o dist/dissemination.js -d",
     "uglify": "uglifyjs -c warnings=false -o dist/dissemination.min.js -- dist/dissemination.js",
     "lint": "eslint ./src",
-    "lint:test": "eslint -c .eslintrc.test.json ./test",
+    "lint:test": "eslint -c test/.eslintrc.json ./test",
     "test": "mocha --recursive --require babel-register test",
-    "test:coverage": "istanbul cover _mocha -- --recursive --require babel-register test && cat ./coverage/lcov.info | coveralls",
-    "prepublish": "npm run lint && npm test && npm run rebuild"
+    "test:coverage": "istanbul cover _mocha -- --recursive --require babel-register test",
+    "test:coveralls": "npm run test:coverage && cat ./coverage/lcov.info | coveralls",
+    "prepublishOnly": "npm run lint && npm test && npm run rebuild"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,9 @@
     "url": "https://github.com/ezze/dissemination/issues"
   },
   "homepage": "https://github.com/ezze/dissemination#readme",
+  "dependencies": {
+    "object-assign": "^4.1.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -46,14 +50,11 @@
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "eslint": "^4.10.0",
-    "eslint-config-ezze": "0.2.0",
+    "eslint-config-ezze": "0.3.0",
     "istanbul": "^1.1.0-alpha.1",
     "mkdirp": "^0.5.1",
     "mocha": "^4.0.1",
     "rimraf": "^2.6.2",
     "uglify-js": "^3.1.8"
-  },
-  "dependencies": {
-    "object-assign": "^4.1.1"
   }
 }
