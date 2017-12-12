@@ -22,7 +22,7 @@ npm install dissemination --save
     var channel = require('dissemination');
     ```
 
-- in browser include `dist/dissemination.js` or `dist/dissemination.min.js` script:
+- in browser include `dist/index.js` or `dist/dissemination.min.js` script:
 
     ```javascript
     var channel = window.dissemination;
