@@ -1,8 +1,8 @@
 # dissemination
 
 [![NPM Version](https://badge.fury.io/js/dissemination.svg)](https://badge.fury.io/js/dissemination)
-[![Build Status](https://travis-ci.org/ezze/dissemination.svg?branch=dev)](https://travis-ci.org/ezze/dissemination)
-[![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg?branch=dev)](https://coveralls.io/github/ezze/dissemination?branch=dev)
+[![Build Status](https://travis-ci.org/ezze/dissemination.svg?branch=develop)](https://travis-ci.org/ezze/dissemination)
+[![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg?branch=develop)](https://coveralls.io/github/ezze/dissemination?branch=develop)
 [![Greenkeeper badge](https://badges.greenkeeper.io/ezze/dissemination.svg)](https://greenkeeper.io/)
 
 Lightweight event/command library created to replace [Backbone.Radio](https://github.com/marionettejs/backbone.radio) in
@@ -19,36 +19,36 @@ npm install dissemination --save
 - require with Node.js:
 
     ```javascript
-    var channel = require('dissemination');
+    var dissemination = require('dissemination');
     ```
 
 - in browser include `dist/index.js` or `dist/dissemination.min.js` script:
 
     ```javascript
-    var channel = window.dissemination;
+    var dissemination = window.dissemination;
     ```
     
 and then    
     
 ```javascript    
-channel().on('event', function() { console.log('event is fired'); });
-channel().fire('event');
+dissemination().on('event', function() { console.log('event is fired'); });
+dissemination().fire('event');
 ```
 
 ## Examples
 
 ### Channel
 
-- get default channel (with `application` name):
+- get default dissemination (with `application` name):
 
     ```javascript
-    var c = channel();
+    var c = dissemination();
     ```
     
-- get named channel:
+- get named dissemination:
 
     ```javascript
-    var c = channel('myChannel');
+    var c = dissemination('myChannel');
     ```
     
 ### Events
@@ -57,25 +57,25 @@ channel().fire('event');
 
     ```javascript
     var listener = function() { console.log('event is fired'); };
-    channel().on('event', listener);
+    dissemination().on('event', listener);
     ```    
     
 - remove specific event listener:
     
     ```javascript
-    channel().off('event', listener);
+    dissemination().off('event', listener);
     ```
     
 - remove all event listeners for a given event:
     
     ```javascript
-    channel().off('event');
+    dissemination().off('event');
     ```
     
 - fire event:
 
     ```javascript
-    channel().fire('event');
+    dissemination().fire('event');
     ```
     
 - fire event with parameters:
@@ -85,8 +85,8 @@ channel().fire('event');
         console.log(name); // => 'event'
         console.log(params); // => { item: 1 }
     };
-    channel().on('event', listener);
-    channel().fire('event', { item: 1 });
+    dissemination().on('event', listener);
+    dissemination().fire('event', { item: 1 });
     ```
     
 - add event listener with additional options:
@@ -97,10 +97,10 @@ channel().fire('event');
         console.log(params); // => { item: 1 }
         console.log(options); // => { message: 'hello world' }
     };
-    channel().on('event', listener, {
+    dissemination().on('event', listener, {
         message: 'hello world'      
     });
-    channel().fire('event', { item: 1 });    
+    dissemination().fire('event', { item: 1 });    
     ```
     
 - add event listener that will be executed once:
@@ -108,9 +108,9 @@ channel().fire('event');
     ```javascript
     var count = 0;
     var listener = function() { count += 1; };
-    channel().once('event', listener);
-    channel().fire('event');
-    channel().fire('event');
+    dissemination().once('event', listener);
+    dissemination().fire('event');
+    dissemination().fire('event');
     console.log(count); // => 1
     ```
     
@@ -120,9 +120,9 @@ channel().fire('event');
     var result = 0;
     var listener1 = function() { result += 1; return false; };
     var listener2 = function() { result += 2; };
-    channel().on('event', listener1);
-    channel().on('event', listener2);
-    channel().fire('event');
+    dissemination().on('event', listener1);
+    dissemination().on('event', listener2);
+    dissemination().fire('event');
     console.log(result); // => 1
     ```
     
@@ -130,8 +130,8 @@ channel().fire('event');
 
     ```javascript
     var listener = function() { console.log('event is fired'); };
-    channel().on('event', listener);
-    console.log(channel().listenersRegistered('event')); // => true
+    dissemination().on('event', listener);
+    console.log(dissemination().listenersRegistered('event')); // => true
     ```
     
 ### Commands
@@ -140,27 +140,27 @@ channel().fire('event');
 
     ```javascript
     var handler = function() { console.log('command is handled'); };
-    channel().handle('command', handler);
+    dissemination().handle('command', handler);
     ```
     
 - remove specific command handler:
     
     ```javascript
-    channel().unhandle('command');
+    dissemination().unhandle('command');
     ```
     
 - execute command:
 
     ```javascript
-    channel().execute('command');
+    dissemination().execute('command');
     ```
     
 - execute command with response result:
     
     ```javascript
     var handler = function() { return 1 };
-    channel().handle('command', handler);
-    console.log(channel().request('command')); // => 1
+    dissemination().handle('command', handler);
+    console.log(dissemination().request('command')); // => 1
     ```
     
 - add command handler with additional options:    
@@ -169,17 +169,17 @@ channel().fire('event');
     var positive = function(options) {
         return options.number >= 0;
     };
-    channel().handle('positive', positive);
-    console.log(channel().request('positive', { number: 2 })); // => true
-    console.log(channel().request('positive', { number: -1 })); // => false
+    dissemination().handle('positive', positive);
+    console.log(dissemination().request('positive', { number: 2 })); // => true
+    console.log(dissemination().request('positive', { number: -1 })); // => false
     ```
     
 - check whether command handler is registered:
 
     ```javascript
     var handler = function() { console.log('command is handled'); };
-    channel().handle('command', handler);
-    console.log(channel().handlerRegistered('command')); // => true
+    dissemination().handle('command', handler);
+    console.log(dissemination().handlerRegistered('command')); // => true
     ```    
     
 ### Mixins
@@ -187,13 +187,13 @@ channel().fire('event');
 - add `EventMixin` or/and `CommandMixin` to any custom object:
 
     ```javascript
-    var events = Object.assign({}, channel.EventMixin);
+    var events = Object.assign({}, dissemination.EventMixin);
     events.on('event', function() { console.log('event is fired'); });
     events.fire('event');
     ```
     
     ```javascript
-    var commands = Object.assign({}, channel.CommandMixin);
+    var commands = Object.assign({}, dissemination.CommandMixin);
     commands.handle('command', function() { return 'hello world'; });
     console.log(commands.request('command')); // => 'hello world'
     ```
@@ -218,9 +218,9 @@ In order to run tests with [Coveralls](http://coveralls.io) locally you have to 
         
     COVERALLS_REPO_TOKEN=<token> npm run test:coverage
     
-## Contribution
+## Contributing
     
-Before making a pull request, please, be sure that your changes are rebased to `dev` branch.
+Before making a pull request, please, be sure that you are starting from `develop` branch.
 
 ## License
 
