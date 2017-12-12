@@ -18,6 +18,12 @@ npm install dissemination --save
     
 ## Usage
 
+- ES6:
+
+    ```javascript
+    import dissemination from 'dissemination';
+    ```
+
 - require with Node.js:
 
     ```javascript
@@ -44,13 +50,20 @@ dissemination().fire('event');
 - get default dissemination (with `application` name):
 
     ```javascript
-    var c = dissemination();
+    const c = dissemination();
     ```
     
 - get named dissemination:
 
     ```javascript
-    var c = dissemination('myChannel');
+    const c = dissemination('myChannel');
+    ```
+    
+- create channel directly:
+
+    ```javascript
+    import { Channel } from 'dissemination';
+    const c = new Channel();
     ```
     
 ### Events
@@ -58,7 +71,7 @@ dissemination().fire('event');
 - add event listener:
 
     ```javascript
-    var listener = function() { console.log('event is fired'); };
+    const listener = () => { console.log('event is fired'); };
     dissemination().on('event', listener);
     ```    
     
@@ -83,7 +96,7 @@ dissemination().fire('event');
 - fire event with parameters:
     
     ```javascript
-    var listener = function(name, params) {
+    const listener = (name, params) => {
         console.log(name); // => 'event'
         console.log(params); // => { item: 1 }
     };
@@ -94,7 +107,7 @@ dissemination().fire('event');
 - add event listener with additional options:
     
     ```javascript
-    var listener = function(name, params, options) {
+    const listener = (name, params, options) => {
         console.log(name); // => 'event'
         console.log(params); // => { item: 1 }
         console.log(options); // => { message: 'hello world' }
@@ -108,8 +121,8 @@ dissemination().fire('event');
 - add event listener that will be executed once:
 
     ```javascript
-    var count = 0;
-    var listener = function() { count += 1; };
+    let count = 0;
+    const listener = () => { count += 1; };
     dissemination().once('event', listener);
     dissemination().fire('event');
     dissemination().fire('event');
@@ -119,9 +132,9 @@ dissemination().fire('event');
 - interrupt event listeners' execution chain:
     
     ```javascript
-    var result = 0;
-    var listener1 = function() { result += 1; return false; };
-    var listener2 = function() { result += 2; };
+    let result = 0;
+    const listener1 = () => { result += 1; return false; };
+    const listener2 = () => { result += 2; };
     dissemination().on('event', listener1);
     dissemination().on('event', listener2);
     dissemination().fire('event');
@@ -131,7 +144,7 @@ dissemination().fire('event');
 - check whether event listeners are registered:
 
     ```javascript
-    var listener = function() { console.log('event is fired'); };
+    const listener = () => { console.log('event is fired'); };
     dissemination().on('event', listener);
     console.log(dissemination().listenersRegistered('event')); // => true
     ```
@@ -141,7 +154,7 @@ dissemination().fire('event');
 - add command handler:
 
     ```javascript
-    var handler = function() { console.log('command is handled'); };
+    const handler = () => { console.log('command is handled'); };
     dissemination().handle('command', handler);
     ```
     
@@ -160,7 +173,7 @@ dissemination().fire('event');
 - execute command with response result:
     
     ```javascript
-    var handler = function() { return 1 };
+    const handler = () => { return 1 };
     dissemination().handle('command', handler);
     console.log(dissemination().request('command')); // => 1
     ```
@@ -168,9 +181,7 @@ dissemination().fire('event');
 - add command handler with additional options:    
     
     ```javascript
-    var positive = function(options) {
-        return options.number >= 0;
-    };
+    const positive = options => options.number >= 0
     dissemination().handle('positive', positive);
     console.log(dissemination().request('positive', { number: 2 })); // => true
     console.log(dissemination().request('positive', { number: -1 })); // => false
@@ -179,7 +190,7 @@ dissemination().fire('event');
 - check whether command handler is registered:
 
     ```javascript
-    var handler = function() { console.log('command is handled'); };
+    const handler = () => { console.log('command is handled'); };
     dissemination().handle('command', handler);
     console.log(dissemination().handlerRegistered('command')); // => true
     ```    
@@ -189,13 +200,15 @@ dissemination().fire('event');
 - add `EventMixin` or/and `CommandMixin` to any custom object:
 
     ```javascript
-    var events = Object.assign({}, dissemination.EventMixin);
-    events.on('event', function() { console.log('event is fired'); });
+    import { EventMixin } from 'dissemination';
+    const events = Object.assign({}, EventMixin);
+    events.on('event', () => { console.log('event is fired'); });
     events.fire('event');
     ```
     
     ```javascript
-    var commands = Object.assign({}, dissemination.CommandMixin);
+    import { CommandMixin } from 'dissemination';
+    const commands = Object.assign({}, CommandMixin);
     commands.handle('command', function() { return 'hello world'; });
     console.log(commands.request('command')); // => 'hello world'
     ```
