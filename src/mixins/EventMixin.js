@@ -50,7 +50,7 @@ const EventMixin = {
         const listeners = this._listeners[name];
         for (let i = 0; i < listeners.length; i++) {
             const item = listeners[i];
-            const {listener, options, once} = item;
+            const { listener, options, once } = item;
 
             if (once) {
                 listeners.splice(i, 1);

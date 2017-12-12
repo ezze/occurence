@@ -1,10 +1,11 @@
 .idea
+.babelrc
+.eslintrc.json
+.npmignore
+.travis.yml
 coverage
 src
 test
+rollup.*
+yarn.lock
 *.log
-.babelrc
-.eslintrc.json
-.eslintrc.test.json
-.npmignore
-.travis.yml

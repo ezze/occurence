@@ -2,7 +2,7 @@
   "presets": [
     "env"
   ],
-  "plugins": [
-    "add-module-exports"
+  "ignore": [
+    "src/index.umd.js"
   ]
 }

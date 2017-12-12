@@ -1,5 +1,10 @@
 ## Changelog
 
+### 0.4.0 (2017-12-12)
+
+- [Rollup](https://rollupjs.org/) is used to build the library for multiple targets.
+- `Channel`, `EventMixin`, `CommandMixin`, `getChannel` can be imported separately.
+
 ### 0.3.0 (2017-11-10)
 
 - `once` method is added to `EventMixin`.
