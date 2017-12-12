@@ -30,7 +30,7 @@ npm install dissemination --save
     var dissemination = require('dissemination');
     ```
 
-- in browser include `dist/index.js` or `dist/dissemination.min.js` script:
+- in browser include `dist/dissemination.js` or `dist/dissemination.min.js` script:
 
     ```javascript
     var dissemination = window.dissemination;
@@ -47,13 +47,13 @@ dissemination().fire('event');
 
 ### Channel
 
-- get default dissemination (with `application` name):
+- get default channel (with `application` name):
 
     ```javascript
     const c = dissemination();
     ```
     
-- get named dissemination:
+- get named channel:
 
     ```javascript
     const c = dissemination('myChannel');
