@@ -51,7 +51,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "chokidar": "^1.7.0",
+    "chokidar": "^2.0.0",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.1",
     "eslint": "^4.13.1",
