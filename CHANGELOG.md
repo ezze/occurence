@@ -1,5 +1,7 @@
 ## Changelog
 
+- Don't pass event name as an argument to listeners.
+
 ### 0.4.0 (2017-12-12)
 
 - [Rollup](https://rollupjs.org/) is used to build the library for multiple targets.

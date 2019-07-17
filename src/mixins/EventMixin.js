@@ -42,7 +42,7 @@ const EventMixin = {
         listeners.splice(i, 1);
         i--;
       }
-      if (listener(name, params, options) === false) {
+      if (listener(params, options) === false) {
         break;
       }
     }

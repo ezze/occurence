@@ -174,15 +174,14 @@ describe('event', () => {
     result.should.be.equal('12');
   });
 
-  it('event name and parameters as event listener arguments', () => {
+  it('parameters as event listener arguments', () => {
     const channel = new Channel();
     const eventName = 'event';
     const eventParams = {
       item: 1,
       message: 'hello world'
     };
-    const listener = (name, params) => {
-      name.should.be.equal(eventName);
+    const listener = params => {
       params.should.be.deep.equal(eventParams);
     };
     channel.on(eventName, listener);
@@ -195,7 +194,7 @@ describe('event', () => {
       item: 1,
       message: 'hello world'
     };
-    const listener = (name, params, options) => {
+    const listener = (params, options) => {
       options.should.be.deep.equal(eventOptions);
     };
     channel.on('event', listener, eventOptions);
