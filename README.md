@@ -95,9 +95,8 @@ dissemination().fire('event');
 - fire event with parameters:
     
     ```javascript
-    const listener = (name, params) => {
-        console.log(name); // => 'event'
-        console.log(params); // => { item: 1 }
+    const listener = params => {
+      console.log(params); // => { item: 1 }
     };
     dissemination().on('event', listener);
     dissemination().fire('event', { item: 1 });
@@ -106,13 +105,12 @@ dissemination().fire('event');
 - add event listener with additional options:
     
     ```javascript
-    const listener = (name, params, options) => {
-        console.log(name); // => 'event'
-        console.log(params); // => { item: 1 }
-        console.log(options); // => { message: 'hello world' }
+    const listener = (params, options) => {
+      console.log(params); // => { item: 1 }
+      console.log(options); // => { message: 'hello world' }
     };
     dissemination().on('event', listener, {
-        message: 'hello world'      
+      message: 'hello world'      
     });
     dissemination().fire('event', { item: 1 });    
     ```
@@ -180,7 +178,7 @@ dissemination().fire('event');
 - add command handler with additional options:    
     
     ```javascript
-    const positive = options => options.number >= 0
+    const positive = options => options.number >= 0;
     dissemination().handle('positive', positive);
     console.log(dissemination().request('positive', { number: 2 })); // => true
     console.log(dissemination().request('positive', { number: -1 })); // => false
