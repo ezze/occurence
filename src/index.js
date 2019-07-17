@@ -6,7 +6,7 @@ import getChannel from './getChannel';
 
 export default getChannel;
 export {
-    Channel,
-    EventMixin,
-    CommandMixin
+  Channel,
+  EventMixin,
+  CommandMixin
 };

@@ -4,7 +4,6 @@
 [![Build Status](https://travis-ci.org/ezze/dissemination.svg?branch=develop)](https://travis-ci.org/ezze/dissemination)
 [![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg?branch=develop)](https://coveralls.io/github/ezze/dissemination?branch=develop)
 [![Downloads/month](https://img.shields.io/npm/dm/dissemination.svg?maxAge=86400)](https://www.npmjs.com/package/dissemination)
-[![Greenkeeper badge](https://badges.greenkeeper.io/ezze/dissemination.svg)](https://greenkeeper.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Lightweight event/command library created to replace [Backbone.Radio](https://github.com/marionettejs/backbone.radio) in
@@ -96,9 +95,8 @@ dissemination().fire('event');
 - fire event with parameters:
     
     ```javascript
-    const listener = (name, params) => {
-        console.log(name); // => 'event'
-        console.log(params); // => { item: 1 }
+    const listener = params => {
+      console.log(params); // => { item: 1 }
     };
     dissemination().on('event', listener);
     dissemination().fire('event', { item: 1 });
@@ -107,13 +105,12 @@ dissemination().fire('event');
 - add event listener with additional options:
     
     ```javascript
-    const listener = (name, params, options) => {
-        console.log(name); // => 'event'
-        console.log(params); // => { item: 1 }
-        console.log(options); // => { message: 'hello world' }
+    const listener = (params, options) => {
+      console.log(params); // => { item: 1 }
+      console.log(options); // => { message: 'hello world' }
     };
     dissemination().on('event', listener, {
-        message: 'hello world'      
+      message: 'hello world'      
     });
     dissemination().fire('event', { item: 1 });    
     ```
@@ -181,7 +178,7 @@ dissemination().fire('event');
 - add command handler with additional options:    
     
     ```javascript
-    const positive = options => options.number >= 0
+    const positive = options => options.number >= 0;
     dissemination().handle('positive', positive);
     console.log(dissemination().request('positive', { number: 2 })); // => true
     console.log(dissemination().request('positive', { number: -1 })); // => false

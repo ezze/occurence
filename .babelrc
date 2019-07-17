@@ -1,6 +1,6 @@
 {
   "presets": [
-    "env"
+    "@babel/env"
   ],
   "ignore": [
     "src/index.umd.js"
