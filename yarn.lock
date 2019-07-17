@@ -1076,10 +1076,10 @@ escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
-eslint-config-ezze@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-ezze/-/eslint-config-ezze-0.7.0.tgz#5a50af940eaf696c2d4fc6e3a7a3c3d46c1e8085"
-  integrity sha512-t/fEC2BMTaXOp+A2OjZrdbioTLxXD/lEOdZPmT/xpA0aOatMUKzDli4u1ZLHV0CJ1ranlGuW5WfS2jNqqLaXMA==
+eslint-config-ezze@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-ezze/-/eslint-config-ezze-0.8.0.tgz#37f9a82d2281d096e967ecb46b23f4bbb9cc7cc6"
+  integrity sha512-aHYAgmcgNHuuS7vFCyX0J0P97Ji2X3hEugA0I1Y3yt6OC5m6eInKch2C5k2KJ+/tLIItVeoHhnv3NgF40snD5w==
 
 eslint-scope@^4.0.3:
   version "4.0.3"
