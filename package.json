@@ -41,9 +41,7 @@
     "url": "https://github.com/ezze/dissemination/issues"
   },
   "homepage": "https://github.com/ezze/dissemination#readme",
-  "dependencies": {
-    "object-assign": "^4.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

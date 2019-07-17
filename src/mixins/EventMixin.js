@@ -1,20 +1,12 @@
 const EventMixin = {
-  on(name, listener, options, once) {
-    options = options || {};
-
+  on(name, listener, options = {}, once = false) {
     if (!this._listeners) {
       this._listeners = {};
     }
-
     if (!this._listeners[name]) {
       this._listeners[name] = [];
     }
-
-    this._listeners[name].push({
-      listener,
-      options,
-      once: !!once
-    });
+    this._listeners[name].push({ listener, options, once: !!once });
   },
   once(name, listener, options) {
     this.on(name, listener, options, true);
@@ -23,13 +15,11 @@ const EventMixin = {
     if (!this.listenersRegistered(name)) {
       throw new TypeError(`Listeners for event "${name}" are not registered.`);
     }
-
     if (listener === undefined) {
       // Removing all listeners for a given event
       delete this._listeners[name];
       return;
     }
-
     const index = this._listeners[name].findIndex(item => item.listener === listener);
     if (index === -1) {
       throw new TypeError(`Specified listener for event "${name}" is not registered.`);
@@ -40,23 +30,18 @@ const EventMixin = {
       delete this._listeners[name];
     }
   },
-  fire(name, params) {
+  fire(name, params = {}) {
     if (!this._listeners || !this._listeners[name]) {
       return;
     }
-
-    params = params || {};
-
     const listeners = this._listeners[name];
     for (let i = 0; i < listeners.length; i++) {
       const item = listeners[i];
-      const { listener, options, once } = item;
-
+      const { listener, options, once = false } = item;
       if (once) {
         listeners.splice(i, 1);
         i--;
       }
-
       if (listener(name, params, options) === false) {
         break;
       }
