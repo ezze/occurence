@@ -1,21 +1,17 @@
 import babel from 'rollup-plugin-babel';
 
 const config = {
-  name: 'dissemination',
   input: 'src/index.js',
   output: {
+    name: 'dissemination',
     file: 'dist/dissemination.es.js',
     format: 'es'
   },
   plugins: [
     babel({
-      babelrc: false,
-      presets: [
-        ['env', { modules: false }]
-      ],
-      plugins: [
-        'external-helpers'
-      ],
+      babelrc: true,
+      externalHelpers: true,
+      plugins: [],
       exclude: 'node_modules/**'
     })
   ]
