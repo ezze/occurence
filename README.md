@@ -4,7 +4,6 @@
 [![Build Status](https://travis-ci.org/ezze/dissemination.svg?branch=develop)](https://travis-ci.org/ezze/dissemination)
 [![Coverage Status](https://coveralls.io/repos/github/ezze/dissemination/badge.svg?branch=develop)](https://coveralls.io/github/ezze/dissemination?branch=develop)
 [![Downloads/month](https://img.shields.io/npm/dm/dissemination.svg?maxAge=86400)](https://www.npmjs.com/package/dissemination)
-[![Greenkeeper badge](https://badges.greenkeeper.io/ezze/dissemination.svg)](https://greenkeeper.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Lightweight event/command library created to replace [Backbone.Radio](https://github.com/marionettejs/backbone.radio) in
